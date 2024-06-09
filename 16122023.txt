@@ -1,0 +1,109 @@
+//Java program to handle the exception without maintaining the order of exceptions
+class MultipleCatchBlock5{    
+  public static void main(String args[]){    
+   try{    
+    int a[]=new int[5];    
+    a[5]=30/0;    
+   }    
+   catch(Exception e){System.out.println("completed common task");}    
+   catch(ArithmeticException e){System.out.println("task 1 completed");}    
+   catch(ArrayIndexOutOfBoundsException e){System.out.println("task 2 completed");}    
+   System.out.println("rest of the code...");    
+ }    
+} 
+
+//Java program to catch base exception class only
+class Main {
+  public static void main(String[] args) {
+    try {
+      int array[] = new int[10];
+      array[10] = 30 / 0;
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+}
+
+//Java program to catch base and child exception classes
+class Main {
+  public static void main(String[] args) {
+    try {
+      int array[] = new int[10];
+      array[10] = 30 / 0;
+    } catch (Exception | ArithmeticException | ArrayIndexOutOfBoundsException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+}
+
+
+public class MultipleCatchBlock4 {  
+  
+    public static void main(String[] args) {  
+          
+           try{    
+                String s=null;  
+                System.out.println(s.length());  
+               }    
+               catch(ArithmeticException e)  
+                  {  
+                   System.out.println("Arithmetic Exception");  
+                  }    
+               catch(ArrayIndexOutOfBoundsException e)  
+                  {  
+                   System.out.println("ArrayIndexOutOfBounds Exception");  
+                  }    
+               catch(Exception e)  
+                  {  
+                   System.out.println("Parent Exception");  
+                  }             
+               System.out.println("rest of the code");    
+    }  
+}  
+
+import java.util.Scanner;
+class InvalidAgeException extends Exception
+{
+InvalidAgeException(String name)
+{
+super(name);
+}
+class Main
+{
+public static void main(String[] args)
+{
+System.out.print("Enter age : ");
+Scanner sc = new Scanner(System.in);
+int age = sc.nextInt();
+}
+class Person
+{
+static void canVote(int age) throws InvalidAgeException
+{
+if(age>=18){
+System.out.println("Can vote");
+}
+else
+{
+InvalidAgeException obj = new InvalidAgeException("Invalid Age");
+throw obj;
+}
+}
+}
+
+
+class Main{
+public static void main(String[] args){
+System.out.print("Enter age : ");
+Scanner sc = new Scanner(System.in);
+int age = sc.nextInt();
+try
+{
+Person.canVote(age);
+}
+catch (InvalidAgeException e)
+{
+System.out.println("Exception : " + e.getMessage());
+}
+}
+}
